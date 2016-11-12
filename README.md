@@ -1,7 +1,7 @@
 What?
 =====
 
-This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders.
+This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work.
 
 Why?
 ====
@@ -19,4 +19,8 @@ The Blender OpenColorIO configuration directory is located in:
 
     Move the existing ````colormanagement```` directory to a backup location, and place the contents of
     this repository into a new ````colormanagement```` directory.
+    
+    Optionally, instead of replacing the actual directory, use the envrionment variable to specify where the OCIO configuration lives:
+
+        export OCIO=/path/to/where/the/filmic-blender/config.ocio
  1. From within the Color Management panel, change the View to your desired contrast level and render.
