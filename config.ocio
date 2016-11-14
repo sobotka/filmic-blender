@@ -2,7 +2,8 @@
 # Blender. Crafted by Troy James Sobotka with 
 # special thanks and feedback from Guillermo
 # Espertino, Claudio Rocha, Bassam Kurdali, Eugenio
-# Pignataro, Henri Hebeisen, and Jason Clarke.
+# Pignataro, Henri Hebeisen, Jason Clarke,
+# Haarm-Peter Duiker, and Thomas Mansencal.
 
 ocio_profile_version: 1
 
@@ -18,13 +19,13 @@ roles:
   default_byte: sRGB EOTF
   default_float: Linear
   default_sequencer: sRGB EOTF
-  color_picking: Raw
-  texture_paint: Raw
+  color_picking: sRGB EOTF
+  texture_paint: sRGB EOTF
 
 displays:
   Filmlike:
     - !<View> {name: sRGB EOTF, colorspace: sRGB EOTF}
-    - !<View> {name: Data, colorspace: Raw}
+    - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Scene Linear, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
     - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
@@ -43,7 +44,7 @@ active_views: [Filmlike, No View]
 colorspaces:
   - !<ColorSpace>
     name: Linear
-    family: aces
+    family:
     equalitygroup:
     bitdepth: 32f
     description: |
@@ -51,17 +52,6 @@ colorspaces:
     isdata: false
     allocation: lg2
     allocationvars: [-10, 10.0, 1.7637719091167E-4]
-
-  - !<ColorSpace>
-    name: Raw
-    family: raw
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      Raw data space.
-    isdata: true
-    allocation: uniform
-    allocationvars: [0, 1]
 
 #  - !<ColorSpace>
 #    name: Debug
@@ -120,10 +110,10 @@ colorspaces:
     to_reference: !<FileTransform> {src: sRGB_OETF_to_Linear.spi1d, interpolation: linear}
 
   - !<ColorSpace>
-    name: Non-Color
-    family: raw
+    name: Non-Colour Data
+    family:
     description: |
-        Transform to flag data as non-colour, and avoid OCIO transforms.
+        Transform to flag data as non-colour, strictly data, and avoid OCIO transforms.
     equalitygroup:
     bitdepth: 32f
     isdata: true
