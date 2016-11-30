@@ -14,13 +14,18 @@ luma: [0.2126, 0.7152, 0.0722]
 description: A filmlike dynamic range encoding set for Blender
 
 roles:
+  default: Linear
   reference: Linear
   scene_linear: Linear
+  data: Non-Colour Data
+  compositing_log: Filmic Log Encoding
+  color_timing: Filmic Log Encoding
   default_byte: sRGB EOTF
   default_float: Linear
   default_sequencer: sRGB EOTF
   color_picking: sRGB EOTF
   texture_paint: sRGB EOTF
+  matte_paint: Filmic Log Encoding
 
 displays:
   Filmlike:
@@ -28,18 +33,18 @@ displays:
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
-    - #!<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
-    - #!<View> {name: Filmic Medium High Contrast, colorspace: Filmic Log Encoding, look: +Medium High Contrast}
-    - #!<View> {name: Filmic Medium Low Contrast, colorspace: Filmic Log Encoding, look: +Medium Low Contrast}
-    - #!<View> {name: Filmic Low Contrast, colorspace: Filmic Log Encoding, look: +Low Contrast}
-    - #!<View> {name: Filmic Base Contrast, colorspace: Filmic Log Encoding, look: +Base Contrast}
-    - #!<View> {name: Debug, colorspace: Debug}
+#    - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
+#    - !<View> {name: Filmic Medium High Contrast, colorspace: Filmic Log Encoding, look: +Medium High Contrast}
+#    - !<View> {name: Filmic Medium Low Contrast, colorspace: Filmic Log Encoding, look: +Medium Low Contrast}
+#    - !<View> {name: Filmic Low Contrast, colorspace: Filmic Log Encoding, look: +Low Contrast}
+#    - !<View> {name: Filmic Base Contrast, colorspace: Filmic Log Encoding, look: +Base Contrast}
+#    - !<View> {name: Debug, colorspace: Debug}
 
-  None:
-    - !<View> {name: No View, colorspace: Raw}
+None:
+    - !<View> {name: No View, colorspace: Non-Colour Data}
 
 active_displays: [Filmlike, None]
-active_views: [Filmlike, No View]
+active_views: [Filmlike, Non-Colour Data]
 
 colorspaces:
   - !<ColorSpace>
