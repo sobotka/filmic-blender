@@ -40,11 +40,11 @@ displays:
 #    - !<View> {name: Filmic Base Contrast, colorspace: Filmic Log Encoding, look: +Base Contrast}
 #    - !<View> {name: Debug, colorspace: Debug}
 
-None:
+  None:
     - !<View> {name: No View, colorspace: Non-Colour Data}
 
-active_displays: [Filmlike, None]
-active_views: [Filmlike, Non-Colour Data]
+#active_displays: [Filmlike, None]
+#active_views: [Filmic Log Encoding Base, sRGB EOTF, Non-Colour Data, Linear Raw, No View]
 
 colorspaces:
   - !<ColorSpace>
