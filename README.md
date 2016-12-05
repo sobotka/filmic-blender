@@ -64,11 +64,11 @@ The basic kit of weaponry includes:
     | High Clip | White | Scene Referred Linear value above 16.29174024. |
   
   1. Five contrast base looks for use with the ***Filmic Log Encoding Base***. All map middle grey 0.18 to 0.5 display referred. Each has a smooth roll off on the shoulder and toe. They include:
-   1. ***High Contrast***.
-   1. ***Medium High Contrast***.
-   1. ***Base Contrast***. Similar to the sRGB contrast range, with a smoother toe.
-   1. ***Medium Low Contrast***.
-   1. ***Low Contrast***.
+    1. ***High Contrast***.
+    1. ***Medium High Contrast***.
+    1. ***Base Contrast***. Similar to the sRGB contrast range, with a smoother toe.
+    1. ***Medium Low Contrast***.
+    1. ***Low Contrast***.
 
 Grading Your Work
 =================
