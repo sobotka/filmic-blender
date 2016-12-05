@@ -50,7 +50,7 @@ The basic kit of weaponry includes:
   1. ***Greyscale***. This Look is based off of the ***Filmic Log Encoding Base*** and will deliver a weighted greyscale version of the image. The weights used are for REC.709 RGB lights, which are the same lights specified in sRGB.
   1. ***False Colour***. This Look is a useful tool for evaluating your image in terms of the dynamic range and latitude. It is a colour coded "heat map" of your image values, according to the following codes:
   
-    | Blah | Blah | Blah |
+    | Value | Colour | Scene Referred Value |
     | ---- | ---- | ---- |
     | Low Clip | Black | Scene Referred Linear value below 0.0001762728758. |
     | -10 EV | Purple | Scene Referred Linear value 0.0001762728758. |
