@@ -57,7 +57,7 @@ The basic kit of weaponry includes:
     | -7 EV | Blue | Scene Referred Linear value 0.001404109349. |
     | -4 EV | Cyan | Scene Linear value 0.01124714399. |
     | -2 EV | Green | Scene Referred Linear value 0.04456791864. |
-    | 0 EV| Gray | Scene Referred Linear value 0.18009142. |
+    | 0 EV| Grey | Scene Referred Linear value 0.18009142. |
     | +2 EV | Green | Scene Referred Linear value 0.7196344767. |
     | +4 EV | Yellow | Scene Referred Linear value 2.883658483. |
     | +5.5 EV | Red | Scene Referred Linear value 8.150007644. |
