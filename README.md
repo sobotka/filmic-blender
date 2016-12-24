@@ -51,11 +51,11 @@ A set of Look transforms that include:
 
  1. ***Greyscale***. This Look is based off of the ***Filmic Log Encoding Base*** and will deliver a weighted greyscale version of the image. The weights used are for REC.709 RGB lights, which are the same lights specified in sRGB.
  1. Five contrast base looks for use with the ***Filmic Log Encoding Base***. All map middle grey 0.18 to 0.5 display referred. Each has a smooth roll off on the shoulder and toe. They include:
-  1. ***High Contrast***.
-  1. ***Medium High Contrast***.
-  1. ***Base Contrast***. Similar to the sRGB contrast range, with a smoother toe.
-  1. ***Medium Low Contrast***.
-  1. ***Low Contrast***.
+    1. ***High Contrast***.
+    1. ***Medium High Contrast***.
+    1. ***Base Contrast***. Similar to the sRGB contrast range, with a smoother toe.
+    1. ***Medium Low Contrast***.
+    1. ***Low Contrast***.
  1. ***False Colour***. This Look is a useful tool for evaluating your image in terms of the dynamic range and latitude. It is a colour coded "heat map" of your image values, according to the following codes:
   
     | Value | Colour | Scene Referred Value |
