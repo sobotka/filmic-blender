@@ -23,10 +23,11 @@ Because the basic sRGB EOTF was never designed for rendering and should be avoid
 
     Move the existing ````colormanagement```` directory to a backup location, and place the contents of
     this repository into a new ````colormanagement```` directory.
-    
+
  1. Optionally, instead of replacing the actual directory, use the envrionment variable to specify where the OCIO configuration lives:
 
         export OCIO=/path/to/where/the/filmic-blender/config.ocio
+
 1. From within the Color Management panel, change the View to your desired contrast level and render.
 
 Once you have Blender utilising the configuration, you are free to render away. You may discover that some of your materials were broken due to exceptionally low lighting levels, and may require reworking. General PBR advice holds true when using wider and more photographic illumination levels.
@@ -37,13 +38,16 @@ The basic kit of weaponry includes:
 
 ## View Transforms
 A set of View transforms that include:
+
  1. ***sRGB EOTF***. This is an accurate version of the sRGB transfer function. This is identical to what imagers would use as the "Default" View transform in Blender proper. Should be avoided at all costs for CGI work. Useful in some edge cases.
  1. ***Non-Colour Data***. This is a view useful for evaluating a data format. Do not expect to see perceptual values however, as it is literally data dumped directly to the screen. Use this transform on your buffer, via the *UV Image Viewer* Properties panel, if your buffer represents data and not colour information. This will keep it out of the OpenColorIO transformation pipeline chain and leave it as data.
  1. ***Linear Raw***. This is a colour managed linearized version of your data. For all intents an purposes, will look identical to ***Non-Colour Data***, but applied to colour based data such as an image.
  1. ***Filmic Log Encoding Base***. This is the workhorse View for all of your rendering work. Setting it in the View will result in a log encoded appearance, which will look exceptionally low contrast. Use this if you want to adjust the image for grading using another tool such as Resolve, with no additional modifications. Save to a high bit depth display referred format such as 16 bit TIFF. This basic view is designed to be coupled with one of the contrast looks.
 
 ## Look Transforms
+
 A set of Look transforms that include:
+
  1. ***Greyscale***. This Look is based off of the ***Filmic Log Encoding Base*** and will deliver a weighted greyscale version of the image. The weights used are for REC.709 RGB lights, which are the same lights specified in sRGB.
  1. Five contrast base looks for use with the ***Filmic Log Encoding Base***. All map middle grey 0.18 to 0.5 display referred. Each has a smooth roll off on the shoulder and toe. They include:
   1. ***High Contrast***.
