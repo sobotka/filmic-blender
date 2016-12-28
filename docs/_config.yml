@@ -1,9 +1,0 @@
-title: Filmic Blender
-description: Filmic View and Look Transformations for Blender
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-slate
-
-gems:
-  - jekyll-mentions
-  - jekyll-readme-index
