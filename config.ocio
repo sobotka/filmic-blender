@@ -34,11 +34,15 @@ displays:
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
+# VRay users should uncomment the Filmic views below as VRay doesn't permit Looks
+#    - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very Low Contrast}
 #    - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
 #    - !<View> {name: Filmic Medium High Contrast, colorspace: Filmic Log Encoding, look: +Medium High Contrast}
+#    - !<View> {name: Filmic Very Low Contrast, colorspace: Filmic Log Encoding, look: +Very Low Contrast}
 #    - !<View> {name: Filmic Medium Low Contrast, colorspace: Filmic Log Encoding, look: +Medium Low Contrast}
 #    - !<View> {name: Filmic Low Contrast, colorspace: Filmic Log Encoding, look: +Low Contrast}
 #    - !<View> {name: Filmic Base Contrast, colorspace: Filmic Log Encoding, look: +Base Contrast}
+#    ~ !<View> {name: Filmic False Colour, colourspace: Filmic Log Encoding, look: +Filmic False Colour}
 #    - !<View> {name: Debug, colorspace: Debug}
 
   None:
@@ -73,7 +77,6 @@ colorspaces:
 #          children:
 #              - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 12.526068812]} #[-12.473931188, 7.526068812]}
 #              - !<AllocationTransform> {allocation: uniform, vars: [0, 0.66]} #0.825
-#              - !<FileTransform> {src: Linear_to_0-7_1-05_Tonemap.spi1d, interpolation: linear}
 
   - !<ColorSpace>
     name: Filmic Log Encoding
@@ -139,26 +142,36 @@ looks:
     transform: !<FileTransform> {src: Filmic_False_Colour.spi3d, interpolation: best}
 
   - !<Look>
+    name: Very High Contrast
+    process_space: Filmic Log Encoding
+    transform: !<FileTransform> {src: Filmic_to_1.20_1-00.spi1d, interpolation: linear}
+
+  - !<Look>
     name: High Contrast
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Linear_to_1-1_1-0_Tonemap.spi1d, interpolation: linear}
+    transform: !<FileTransform> {src: Filmic_to_0.99_1-0075.spi1d, interpolation: linear}
 
   - !<Look>
     name: Medium High Contrast
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Linear_to_1-0_1-0_Tonemap.spi1d, interpolation: best}
+    transform: !<FileTransform> {src: Filmic_to_0-85_1-011.spi1d, interpolation: best}
 
   - !<Look>
     name: Base Contrast
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Linear_to_0-7_1-05_Tonemap.spi1d, interpolation: linear}
+    transform: !<FileTransform> {src: Filmic_to_0-70_1-03.spi1d, interpolation: linear}
 
   - !<Look>
     name: Medium Low Contrast
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Linear_to_0-6_1-05_Tonemap.spi1d, interpolation: linear}
+    transform: !<FileTransform> {src: Filmic_to_0-60_1-04.spi1d, interpolation: linear}
 
   - !<Look>
     name: Low Contrast
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Linear_to_0-5_1-05_Tonemap.spi1d, interpolation: linear}
+    transform: !<FileTransform> {src: Filmic_to_0-48_1-09.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: Very Low Contrast
+    process_space: Filmic Log Encoding
+    transform: !<FileTransform> {src: Filmic_to_0-35_1-30.spi1d, interpolation: linear}
