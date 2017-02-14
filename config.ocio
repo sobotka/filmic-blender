@@ -36,7 +36,7 @@ displays:
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
 # VRay users should uncomment the Filmic views below as VRay doesn't permit Looks
-#    - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very Low Contrast}
+#    - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very High Contrast}
 #    - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
 #    - !<View> {name: Filmic Medium High Contrast, colorspace: Filmic Log Encoding, look: +Medium High Contrast}
 #    - !<View> {name: Filmic Very Low Contrast, colorspace: Filmic Log Encoding, look: +Very Low Contrast}
