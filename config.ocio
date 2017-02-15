@@ -43,7 +43,7 @@ displays:
 #    - !<View> {name: Filmic Medium Low Contrast, colorspace: Filmic Log Encoding, look: +Medium Low Contrast}
 #    - !<View> {name: Filmic Low Contrast, colorspace: Filmic Log Encoding, look: +Low Contrast}
 #    - !<View> {name: Filmic Base Contrast, colorspace: Filmic Log Encoding, look: +Base Contrast}
-#    ~ !<View> {name: Filmic False Colour, colourspace: Filmic Log Encoding, look: +False Colour}
+#    - !<View> {name: Filmic False Colour, colourspace: Filmic Log Encoding, look: +False Colour}
 #    - !<View> {name: Debug, colorspace: Debug}
 
   None:
