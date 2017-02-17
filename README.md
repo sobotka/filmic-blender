@@ -75,7 +75,7 @@ A set of Look transforms that include:
 
 # Grading Your Work
 
-Given that images generated under Cycels are scene referred, many nodes in Blender, being broken, will not work properly. This may have been hidden if one used a range that perfectly mapped to the display referred domain such as the sRGB EOTF, however using a proper View transform exacerbates this brokenness.
+Given that images generated under Cycles are scene referred, many nodes in Blender, being broken, will not work properly. This may have been hidden if one used a range that perfectly mapped to the display referred domain such as the sRGB EOTF, however using a proper View transform exacerbates this brokenness.
 
 There are a good number of nodes that work absolutely fine. For grading, it is highly encouraged to use the ASC CDL node, as it operates on scene referred imagery perfectly well. It is in the ***Color -> Color Balance*** node. Do **not** use the ***Lift, Gamma, Gain*** default as it is strictly a display referred formula and will break on scene referred imagery. Instead, change the drop down to ***ASC CDL*** and use the *Slope*, *Offset*, and *Power* controls to perform grading.
 
