@@ -31,7 +31,7 @@ roles:
 displays:
   sRGB / BT.709:
     - !<View> {name: sRGB EOTF, colorspace: sRGB EOTF}
-    - !<View> {name: BT.1886 ETOF, colorspace: BT.1886 EOTF}
+    - !<View> {name: BT.1886 EOTF, colorspace: BT.1886 EOTF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
