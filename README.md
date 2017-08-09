@@ -83,7 +83,7 @@ Almost all of the Adobe PDF specification blend modes in the ***Mix*** node are 
 
 # Viewing in Other Applications
 
-If you wish to tag Filmic still imagea for propeely colour managed viewers, an ICC profile that uses REC.709 primaries, white point, and specifies a 2.2 power function is appropriate. [https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/sRGB-elle-V2-g22.icc](Elle Stone has such a profile located in her GitHub). The canonized sRGB ICC profile is not a match. Simply assign the profile to your generated image. Do not convert.
+If you wish to tag Filmic still imagea for propeely colour managed viewers, an ICC profile that uses REC.709 primaries, white point, and specifies a 2.2 power function is appropriate. [Elle Stone has such a profile located in her GitHub](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/sRGB-elle-V2-g22.icc). The canonized sRGB ICC profile is not a match. Simply assign the profile to your generated image. Do not convert.
 
 # Issues
 
