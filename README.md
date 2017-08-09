@@ -81,6 +81,10 @@ There are a good number of nodes that work absolutely fine. For grading, it is h
 
 Almost all of the Adobe PDF specification blend modes in the ***Mix*** node are also display referred and are broken for Cycles rendering. That includes but is not limited to Overlay, Screen, and other such modes.
 
+# Viewing in Other Applications
+
+If you wish to tag Filmic still imagea for propeely colour managed viewers, an ICC profile that uses REC.709 primaries, white point, and specifies a 2.2 power function is appropriate. [https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/sRGB-elle-V2-g22.icc](Elle Stone has such a profile located in her GitHub). The canonized sRGB ICC profile is not a match. Simply assign the profile to your generated image. Do not convert.
+
 # Issues
 
 Please post any and all issues to the issue tracker at GitHub.
