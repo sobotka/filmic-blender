@@ -1,3 +1,5 @@
+### [Download latest version](https://github.com/sobotka/filmic-blender/archive/master.zip)
+
 # Who?
 
 This is a simple OpenColorIO configuration for intermediate to advanced imagers using Blender's Cycles raytracing engine.
