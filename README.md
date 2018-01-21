@@ -1,3 +1,5 @@
+# [Download the latest version of Filmic Blender](https://github.com/sobotka/filmic-blender/archive/master.zip)
+
 # Who?
 
 This is a simple OpenColorIO configuration for intermediate to advanced imagers using Blender's Cycles raytracing engine.
@@ -16,7 +18,7 @@ Because the basic sRGB EOTF was never designed for rendering and should be avoid
 
 # How?
 
-1. Download this repository. Replace your current OpenColorIO configuration in Blender with this version.
+1. [Download the latest version of Filmic Blender](https://github.com/sobotka/filmic-blender/archive/master.zip). Replace your current OpenColorIO configuration in Blender with this version.
  1. The Blender OpenColorIO configuration directory is located in:
 
         BLENDER/bin/VERSIONNUMBER/datafiles/colormanagement
