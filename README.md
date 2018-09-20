@@ -36,9 +36,11 @@ Once you have Blender utilising the configuration, you are free to render away. 
 
 # Supported Displays
 
-The current configuration supports generic sRGB displays with a 2.2 transfer
-function, as well as all Apple iMacs from 2015, and MacBooks and MacBook pros
-from 2016 on.
+The current configuration supports:
+ * Generic sRGB / REC.709 displays with 2.2 native power function
+ * Apple MacBook Pros from 2016 on.
+ * Apple iMac Pros.
+ * Apple iMac from late 2015 on.
 
 # Additional Information and Technical Details
 
