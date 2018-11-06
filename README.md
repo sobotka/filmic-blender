@@ -34,6 +34,14 @@ Because the basic sRGB EOTF was never designed for rendering and should be avoid
 
 Once you have Blender utilising the configuration, you are free to render away. You may discover that some of your materials were broken due to exceptionally low lighting levels, and may require reworking. General PBR advice holds true when using wider and more photographic illumination levels.
 
+# Supported Displays
+
+The current configuration supports:
+ * Generic sRGB / REC.709 displays with 2.2 native power function
+ * Apple MacBook Pros from 2016 on.
+ * Apple iMac Pros.
+ * Apple iMac from late 2015 on.
+
 # Additional Information and Technical Details
 
 The basic kit of weaponry includes:
