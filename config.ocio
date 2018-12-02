@@ -29,16 +29,16 @@ roles:
   matte_paint: Filmic Log Encoding
 
 displays:
-  Apple DCI-P3 Native 2.2:
-    - !<View> {name: sRGB OETF, colorspace: AppleP3 sRGB OETF}
-    - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
-    - !<View> {name: Linear Raw, colorspace: Linear}
-    - !<View> {name: Filmic Log Encoding Base, colorspace: AppleP3 Filmic Log Encoding}
   sRGB Native 2.2:
     - !<View> {name: sRGB OETF, colorspace: sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
+  Apple DCI-P3 Native 2.2:
+    - !<View> {name: sRGB OETF, colorspace: AppleP3 sRGB OETF}
+    - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
+    - !<View> {name: Linear Raw, colorspace: Linear}
+    - !<View> {name: Filmic Log Encoding Base, colorspace: AppleP3 Filmic Log Encoding}
 # VRay users should uncomment the Filmic views below as VRay doesn't permit Looks
 #    - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very High Contrast}
 #    - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
