@@ -41,6 +41,10 @@ The current configuration supports:
  * Apple MacBook Pros from 2016 on.
  * Apple iMac Pros.
  * Apple iMac from late 2015 on.
+ 
+ Due to an unfortunate side effect of the way Blender has thus far integrated colour management, folks pushing pixels on Apple Display P3 devices will need to be careful when encoding images. Loosely:
+ * When viewing renders, use the Apple Display P3 setting.
+ * When saving nonlinear display referred files such as JPEG, TIFF, etc. it is critical that the Display be set to the file encoding. For example, for sRGB imagery, the View must be set to sRGB for the file to be properly encoded. **If this is not done, the file will not be encoded properly**. [The bug / todo can be found at the link provided](https://developer.blender.org/T58805).
 
 # Additional Information and Technical Details
 
