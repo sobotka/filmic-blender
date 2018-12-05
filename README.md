@@ -38,9 +38,10 @@ Once you have Blender utilising the configuration, you are free to render away. 
 
 The current configuration supports:
  * Generic sRGB / REC.709 displays with 2.2 native power function
- * Apple MacBook Pros from 2016 on.
- * Apple iMac Pros.
- * Apple iMac from late 2015 on.
+ * Display P3 displays with 2.2 native power function. Examples include:
+   * Apple MacBook Pros from 2016 on.
+   * Apple iMac Pros.
+   * Apple iMac from late 2015 on.
  
  Due to an unfortunate side effect of the way Blender has thus far integrated colour management, folks pushing pixels on Apple Display P3 devices will need to be careful when encoding images. Loosely:
  * When viewing renders, use the Apple Display P3 setting.
