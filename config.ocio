@@ -29,12 +29,12 @@ roles:
   matte_paint: Filmic Log Encoding
 
 displays:
-  sRGB Native 2.2:
+  sRGB:
     - !<View> {name: sRGB OETF, colorspace: sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
-  Apple DCI-P3 Native 2.2:
+  Apple Display P3:
     - !<View> {name: sRGB OETF, colorspace: AppleP3 sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
@@ -50,7 +50,7 @@ displays:
 #    - !<View> {name: Filmic False Colour, colorspace: Filmic Log Encoding, look: +False Colour}
 #    - !<View> {name: Debug, colorspace: Debug}
 
-active_displays: [sRGB Native 2.2, Apple DCI-P3 Native 2.2, None]
+active_displays: [sRGB, Apple Display P3, None]
 #active_views: [Filmic Log Encoding Base, sRGB OETF, Non-Colour Data, Linear Raw, No View]
 
 colorspaces:
