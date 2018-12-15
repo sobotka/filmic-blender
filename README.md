@@ -100,6 +100,37 @@ Almost all of the Adobe PDF specification blend modes in the ***Mix*** node are 
 
 It is important to tag your imagery generated with Filmic with the canonized sRGB ICC for viewing outside of Blender and across applications and the web. Simply assign the profile to your generated image using the tool of your choice. Do not convert.
 
+# Colorimetric Information
+
+## RGB Primaries
+
+Filmic was designed to be easily integrated into existing pipelines, and as such, uses the primaries and achromatic white colour outlined in ITU-R BT.709 specification. As a result, the reference space lights match the sRGB specification and are as follows:
+
+| Primary | x | y |
+| -- | -- | -- |
+| Red | 0.64 | 0.33 |
+| Green | 0.30 | 0.60 |
+| Blue | 0.15 | 0.06 |
+| Achromatic | 0.3127 | 0.3290 |
+
+## RGB to XYZ transform
+
+Following with the above, the transformation for primaries to the CIE 1931 2 degree standard observer XYZ model, is:
+
+| Primary | Red | Green | Blue |
+| -- | -- | -- | -- |
+| X | 0.4123910 | 0.3575840 | 0.1804810 |
+| Y | 0.2126390 | 0.7151690 | 0.0721923 |
+| Z | 0.0193308 | 0.1191950 | 0.9505320 |
+
+## Transfer Function of Base Log Encoding
+
+The canonized ground-truth encoding for Filmic is the *Filmic Base Log Encoding*. The Base Log Encoding is a pure normalized log 2 encoding in two parts, to accomodate the gamut mapping for wide primary ratio intensity gamut mapping. The first portion that is routed through the 3D LUT for the gamut compression at value range `-12.473931188, 12.526068812`. The final *Base Log Encoding* covers the log 2 range of `-12.473931188, 4.026068812`.
+
+## Transfer Function of Aesthetic Outputs
+
+The contrasts are designed for an idealized sRGB display, with the aforementionned primaries, and an Electro-Optical Transfer Function consisting of a pure 2.2 power function.
+
 # Issues
 
 Please post any and all issues to the issue tracker at GitHub.
