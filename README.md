@@ -6,7 +6,7 @@ This is a simple OpenColorIO configuration for intermediate to advanced imagers 
 
 # What?
 
-This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button™ you can get for an experienced imager.
+This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button™ you can get for an experienced imager. The kit embodies a high dynamic range transfer function and an intensity gamut mapping.
 
 # When?
 
@@ -14,7 +14,7 @@ This repository is ready to use right now, with no compilation or special Blende
 
 # Why?
 
-Because the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration is a step towards providing imagers with a reliable View transform and a Look set useful for modern raytracing engine CGI, animation, and visual effects work with real-world cameras.
+Because the basic sRGB nonlinear transfer functions (OETF / EOTF) were designed to describe an aspect of device response and never for rendering. This configuration is a step towards providing imagers with a reliable camera rendering transform and a base of aesthetic looks useful for modern raytracing engine CGI, animation, and visual effects work with real-world cameras.
 
 # How?
 
@@ -26,7 +26,7 @@ Because the basic sRGB EOTF was never designed for rendering and should be avoid
     Move the existing ````colormanagement```` directory to a backup location, and place the contents of
     this repository into a new ````colormanagement```` directory.
 
- 1. Optionally, instead of replacing the actual directory, use the envrionment variable to specify where the OCIO configuration lives:
+ 1. Optionally, instead of replacing the actual directory, use the environment variable to specify where the OCIO configuration lives:
 
         export OCIO=/path/to/where/the/filmic-blender/config.ocio
 
@@ -34,7 +34,7 @@ Because the basic sRGB EOTF was never designed for rendering and should be avoid
 
 Once you have Blender utilising the configuration, you are free to render away. You may discover that some of your materials were broken due to exceptionally low lighting levels, and may require reworking. General PBR advice holds true when using wider and more photographic illumination levels.
 
-# Supported Displays
+# Supported Display Colorimetry
 
 The current configuration supports:
  * Generic sRGB / REC.709 displays with 2.2 native power function
@@ -43,7 +43,7 @@ The current configuration supports:
    * Apple iMac Pros.
    * Apple iMac from late 2015 on.
  
- Due to an unfortunate side effect of the way Blender has thus far integrated colour management, folks pushing pixels on Apple Display P3 devices will need to be careful when encoding images. Loosely:
+Due to an unfortunate side effect of the way Blender has thus far integrated colour management, folks pushing pixels on Apple Display P3 devices will need to be careful when encoding images. Loosely:
  * When viewing renders, use the Apple Display P3 setting.
  * When saving nonlinear display referred files such as JPEG, TIFF, etc. it is critical that the Display be set to the file encoding. For example, for sRGB imagery, the View must be set to sRGB for the file to be properly encoded. **If this is not done, the file will not be encoded properly**. [The bug / todo can be found at the link provided](https://developer.blender.org/T58805).
 
@@ -55,7 +55,7 @@ The basic kit of weaponry includes:
 
 A set of View transforms that include:
 
- 1. ***sRGB EOTF***. This is an accurate version of the sRGB transfer function. This is identical to what imagers would use as the "Default" View transform in Blender proper. Should be avoided at all costs for CGI work. Useful in some edge cases.
+ 1. ***sRGB OETF***. This is an accurate version of the sRGB transfer function. This is identical to what imagers would use as the "Default" View transform in Blender proper. Should be avoided at all costs for CGI work. Useful in some edge cases for albedo textures, for example.
  1. ***Non-Colour Data***. This is a view useful for evaluating a data format. Do not expect to see perceptual values however, as it is literally data dumped directly to the screen. Use this transform on your buffer, via the *UV Image Viewer* Properties panel, if your buffer represents data and not colour information. This will keep it out of the OpenColorIO transformation pipeline chain and leave it as data.
  1. ***Linear Raw***. This is a colour managed linearized version of your data. For all intents an purposes, will look identical to ***Non-Colour Data***, but applied to colour based data such as an image.
  1. ***Filmic Log Encoding Base***. This is the workhorse View for all of your rendering work. Setting it in the View will result in a log encoded appearance, which will look exceptionally low contrast. Use this if you want to adjust the image for grading using another tool such as Resolve, with no additional modifications. Save to a high bit depth display referred format such as 16 bit TIFF. This basic view is designed to be coupled with one of the contrast looks.
@@ -90,7 +90,7 @@ A set of Look transforms that include:
 
 # Grading Your Work
 
-Given that images generated under Cycles are scene referred, many nodes in Blender, being broken, will not work properly. This may have been hidden if one used a range that perfectly mapped to the display referred domain such as the sRGB EOTF, however using a proper View transform exacerbates this brokenness.
+Given that images generated under Cycles are scene referred, many nodes in Blender, being broken, will not work properly. This may have been hidden if one used a range that perfectly mapped to the display referred domain such as the sRGB transfer function, however using a proper camera rendering transform exacerbates this brokenness.
 
 There are a good number of nodes that work absolutely fine. For grading, it is highly encouraged to use the ASC CDL node, as it operates on scene referred imagery perfectly well. It is in the ***Color -> Color Balance*** node. Do **not** use the ***Lift, Gamma, Gain*** default as it is strictly a display referred formula and will break on scene referred imagery. Instead, change the drop down to ***ASC CDL*** and use the *Slope*, *Offset*, and *Power* controls to perform grading.
 
@@ -98,7 +98,7 @@ Almost all of the Adobe PDF specification blend modes in the ***Mix*** node are 
 
 # Viewing in Other Applications
 
-If you wish to tag Filmic still imagea for properly colour managed viewers, an ICC profile that uses REC.709 primaries, white point, and specifies a 2.2 power function is appropriate. [Elle Stone has such a profile located in her GitHub](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/sRGB-elle-V2-g22.icc). The canonized sRGB ICC profile is not a match. Simply assign the profile to your generated image. Do not convert.
+It is important to tag your imagery generated with Filmic with the canonized sRGB ICC for viewing outside of Blender and across applications and the web. Simply assign the profile to your generated image using the tool of your choice. Do not convert.
 
 # Issues
 
