@@ -27,7 +27,7 @@ The basic sRGB EOTF was never designed for rendering and should be avoided.  Thi
     Move the existing ````colormanagement```` directory to a backup location before placing the contents of
     this repository into a new ````colormanagement```` directory.
 
-3. Optionally, instead of replacing the actual directory, use the envrionment variable to specify where this OCIO configuration lives:
+3. Optionally, instead of replacing the actual directory, use the environment variable to specify where this OCIO configuration lives:
 
         export OCIO=/path/to/where/the/filmic-blender/config.ocio
 
