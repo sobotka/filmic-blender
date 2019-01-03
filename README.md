@@ -8,6 +8,10 @@ This is a simple OpenColorIO configuration for intermediate to advanced imagers 
 
 This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button™ you can get for an experienced imager. The kit embodies a high dynamic range transfer function and an intensity gamut mapping.
 
+Filmic does two things:
+1. It compresses the scene referred linear radiometric energy values down to the display / output referred range. This aspect is known as a transfer function or tone mapping. The shape of the Filmic Base Log with a contrast aesthetic roughly emulates a photographic film curve.
+1. It compresses the gamut for high intensity values. As colour ratios increase in intensity, highly saturated ratios tend to be resistant to transfer function compression, which results in peculiar feeling imagery with some regions feeling appropriately over-exposed and others "lingering" behind. Filmic considers all colour values fair game, and attempts to blend colours into a consistent output that matches our learned expectations from film emulsion-like media.
+
 # When?
 
 This repository is ready to use right now, with no compilation or special Blender application binaries required.
