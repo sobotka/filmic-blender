@@ -193,7 +193,10 @@ looks:
   - !<Look>
     name: False Colour
     process_space: Filmic Log Encoding
-    transform: !<FileTransform> {src: Filmic_False_Colour.spi3d, interpolation: best}
+    transform: !<GroupTransform>
+        children:
+          - !<MatrixTransform> {matrix: [0.2126729, 0.7151521, 0.0721750, 0, 0.2126729, 0.7151521, 0.0721750, 0, 0.2126729, 0.7151521, 0.0721750, 0, 0, 0, 0, 1]}
+          - !<FileTransform> {src: Filmic_False_Colour.spi3d, interpolation: best}
 
   - !<Look>
     name: Very High Contrast

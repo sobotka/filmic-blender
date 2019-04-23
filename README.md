@@ -82,14 +82,14 @@ A set of Look transforms that include:
     | Value | Colour | Scene Referred Value |
     | ---- | ---- | ---- |
     | Low Clip | Black | Scene Referred Linear value below 0.0001762728758. |
-    | -10 EV | Purple | Scene Referred Linear value 0.0001762728758. |
-    | -7 EV | Blue | Scene Referred Linear value 0.001404109349. |
-    | -4 EV | Cyan | Scene Linear value 0.01124714399. |
-    | -2 EV | Green | Scene Referred Linear value 0.04456791864. |
+    | -7.5 EV | Purple | Scene Referred Linear value 0.00099436891. |
+    | -5.0 EV | Blue | Scene Referred Linear value 0.005625. |
+    | -2.5 EV | Cyan | Scene Linear value 0.005625. |
+    | -0.01 EV | Green-Cyan | Scene Referred Linear value ~0.178. |
     | 0 EV| Grey | Scene Referred Linear value 0.18009142. |
-    | +2 EV | Green | Scene Referred Linear value 0.7196344767. |
-    | +4 EV | Yellow | Scene Referred Linear value 2.883658483. |
-    | +5.5 EV | Red | Scene Referred Linear value 8.150007644. |
+    | +0.01 EV | Green-Yellow | Scene Referred Linear value ~0.181. |
+    | +2.17 EV | Yellow | Scene Referred Linear value 0.80779930598. |
+    | +4.33 EV | Red | Scene Referred Linear value 3.62857262286. |
     | High Clip | White | Scene Referred Linear value above 16.29174024. |
 
 # Grading Your Work
