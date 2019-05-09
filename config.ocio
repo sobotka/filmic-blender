@@ -168,9 +168,9 @@ colorspaces:
           - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
     to_reference: !<GroupTransform>
         children:
-          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
-          - !<ColorSpaceTransform> {src: Apple DCI-P3 D65, dst: Linear}
           - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0]}
+          - !<ColorSpaceTransform> {src: Apple DCI-P3 D65, dst: Linear}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
           - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
 
   - !<ColorSpace>
