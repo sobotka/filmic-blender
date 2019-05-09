@@ -1,9 +1,10 @@
-# Filmlike Dynamic Range LUT configuration for
+# Film Emulsion-like configuration for
 # Blender. Crafted by Troy James Sobotka with
-# special thanks and feedback from Guillermo
+# special thanks, feedback, and knowledge from Guillermo
 # Espertino, Claudio Rocha, Bassam Kurdali, Eugenio
 # Pignataro, Henri Hebeisen, Jason Clarke,
-# Haarm-Peter Duiker, Thomas Mansencal, and Timothy
+# Haarm-Peter Duiker, Thomas Mansencal, Andrew
+# Price, Nick Shaw, and Timothy
 # Lottes.
 
 ocio_profile_version: 1
