@@ -35,6 +35,11 @@ displays:
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
+  BT.1886:
+    - !<View> {name: BT.1886 EOTF, colorspace: BT.1886 EOTF}
+    - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
+    - !<View> {name: Linear Raw, colorspace: Linear}
+    - !<View> {name: Filmic Log Encoding Base, colorspace: BT.1886 Filmic Log Encoding}
   Apple Display P3:
     - !<View> {name: sRGB OETF, colorspace: AppleP3 sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
@@ -51,7 +56,7 @@ displays:
 #    - !<View> {name: Filmic False Colour, colorspace: Filmic Log Encoding, look: +False Colour}
 #    - !<View> {name: Debug, colorspace: Debug}
 
-active_displays: [sRGB, Apple Display P3, None]
+active_displays: [sRGB, BT.1886, Apple Display P3, None]
 #active_views: [Filmic Log Encoding Base, sRGB OETF, Non-Colour Data, Linear Raw, No View]
 
 colorspaces:
@@ -135,7 +140,7 @@ colorspaces:
         - !<MatrixTransform> {matrix: [0.515121, 0.291977, 0.157104, 0, 0.241196, 0.692245, 0.0665741, 0, -0.00105286, 0.0418854, 0.784073, 0, 0, 0, 0, 1]}
         - !<MatrixTransform> {matrix: [1.04788, 0.0229187, -0.0502014, 0, 0.0295868, 0.990479, -0.0170593, 0, -0.00923157, 0.0150757, 0.751678, 0, 0, 0, 0, 1], direction: inverse}
         - !<MatrixTransform> {matrix: [0.412391, 0.357584, 0.180481, 0, 0.212639, 0.715169, 0.0721923, 0, 0.0193308, 0.119195, 0.950532, 0, 0, 0, 0, 1], direction: inverse}
-          
+
   - !<ColorSpace>
     name: AppleP3 sRGB OETF
     family:
@@ -150,6 +155,18 @@ colorspaces:
       children:
         - !<FileTransform> {src: sRGB_OETF_to_Linear.spi1d, interpolation: linear}
         - !<ColorSpaceTransform> {src: Apple DCI-P3 D65, dst: Linear}
+
+  - !<ColorSpace>
+    name: BT.1886 EOTF
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      BT.1886 specification display referred Electro-Optical Transfer Function with REC.709 primaries.
+    isdata: false
+    allocation: uniform
+    allocationvars: [0.0, 1.0]
+    to_reference: !<ExponentTransform> {value: [2.4, 2.4, 2.4, 1.0]}
 
   - !<ColorSpace>
     name: AppleP3 Filmic Log Encoding
@@ -175,10 +192,31 @@ colorspaces:
           - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
 
   - !<ColorSpace>
+    name: BT.1886 Filmic Log Encoding
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      Log based filmic shaper with 16.5 stops of latitude, and 25 stops of dynamic range with REC.709 primaries.
+    isdata: false
+    allocation: lg2
+    allocationvars: [-12.473931188, 12.526068812]
+    from_reference: !<GroupTransform>
+        children:
+          - !<ColorSpaceTransform> {src: Linear, dst: Filmic Log Encoding}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0]}
+          - !<ExponentTransform> {value: [2.4, 2.4, 2.4, 1.0], direction: inverse}
+    to_reference: !<GroupTransform>
+        children:
+          - !<ExponentTransform> {value: [2.4, 2.4, 2.4, 1.0]}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
+          - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
+
+  - !<ColorSpace>
     name: Non-Colour Data
     family:
     description: |
-        Transform to flag data as non-colour, strictly data, and avoid OCIO transforms.
+        Transform to flag data as non-colour, strictly data, and avoid OCIO colour specific transforms.
     equalitygroup:
     bitdepth: 32f
     isdata: true
