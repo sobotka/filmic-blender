@@ -214,7 +214,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Fuji F-Log OETF
-    family: ""
+    family: Camera Footage
     equalitygroup: ""
     bitdepth: 32f
     description: |
@@ -239,6 +239,21 @@ colorspaces:
         - !<ColorSpaceTransform> {src: Fuji F-Log OETF, dst: Linear}
         - !<MatrixTransform> {matrix: [0.636958048000, 0.144616904000, 0.168880975000, 0.000000000000, 0.262700212000, 0.677998072000, 0.059301716500, 0.000000000000, 4.994106570E-17, 0.028072693000, 1.060985060000, 0.000000000000, 0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]}
         - !<MatrixTransform> {matrix: [0.412390800000, 0.357584340000, 0.180480790000, 0.000000000000, 0.212639010000, 0.715168680000, 0.072192320000, 0.000000000000, 0.019330820000, 0.119194780000, 0.950532150000, 0.000000000000, 0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000], direction: inverse}
+
+  - !<ColorSpace>
+    name: Panasonic V-Log V-Gamut
+    family: Camera Footage
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Panasonic V-Log / V-Gamut
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: V-Log_to_linear.spi1d, interpolation: linear}
+        - !<MatrixTransform> {matrix: [1.806576, -0.695697, -0.110879, 0, -0.170090 , 1.305955, -0.135865, 0, -0.025206, -0.154468, 1.179674, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
     name: Non-Colour Data
