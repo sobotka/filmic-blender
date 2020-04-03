@@ -256,6 +256,36 @@ colorspaces:
         - !<MatrixTransform> {matrix: [1.806576, -0.695697, -0.110879, 0, -0.170090 , 1.305955, -0.135865, 0, -0.025206, -0.154468, 1.179674, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
+    name: Arri Wide Gamut / LogC EI 800
+    family: Camera Footage
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Panasonic V-Log / V-Gamut
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: V3_LogC_800_to_linear.spi1d, interpolation: linear}
+        - !<MatrixTransform> {matrix: [1.617523, -0.537287, -0.080237, 0, -0.070573, 1.334613, -0.26404, 0, -0.021102, -0.226954, 1.248056, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Arri Wide Gamut / LogC EI 400
+    family: Camera Footage
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Panasonic V-Log / V-Gamut
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: V3_LogC_400_to_linear.spi1d, interpolation: linear}
+        - !<MatrixTransform> {matrix: [1.617523, -0.537287, -0.080237, 0, -0.070573, 1.334613, -0.26404, 0, -0.021102, -0.226954, 1.248056, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
     name: Non-Colour Data
     family:
     description: |
