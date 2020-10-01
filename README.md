@@ -137,4 +137,4 @@ The contrasts are designed for an idealized sRGB display, with the aforementionn
 
 # Issues
 
-Please post any and all issues to the issue tracker at GitHub.
+You can post your issues to the issue tracker at GitHub.
