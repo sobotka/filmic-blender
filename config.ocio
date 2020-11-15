@@ -31,20 +31,26 @@ roles:
 
 displays:
   sRGB:
-    - !<View> {name: sRGB OETF, colorspace: sRGB OETF}
+    - !<View> {name: Display Inverse EOTF, colorspace: sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
   BT.1886:
-    - !<View> {name: BT.1886 EOTF, colorspace: BT.1886 EOTF}
+    - !<View> {name: Display Inverse EOTF, colorspace: BT.1886 EOTF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: BT.1886 Filmic Log Encoding}
   Apple Display P3:
-    - !<View> {name: sRGB OETF, colorspace: AppleP3 sRGB OETF}
+    - !<View> {name: Display Inverse EOTF, colorspace: AppleP3 sRGB OETF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: AppleP3 Filmic Log Encoding}
+  AdobeRGB:
+    - !<View> {name: Display Inverse EOTF, colorspace: AdobeRGB}
+    - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
+    - !<View> {name: Linear Raw, colorspace: Linear}
+    - !<View> {name: Filmic Log Encoding Base, colorspace: AppleP3 Filmic Log Encoding}
+
 # VRay users should uncomment the Filmic views below as VRay doesn't permit Looks
 #    - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very High Contrast}
 #    - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
@@ -56,7 +62,7 @@ displays:
 #    - !<View> {name: Filmic False Colour, colorspace: Filmic Log Encoding, look: +False Colour}
 #    - !<View> {name: Debug, colorspace: Debug}
 
-active_displays: [sRGB, BT.1886, Apple Display P3, None]
+active_displays: [sRGB, BT.1886, Apple Display P3, AdobeRGB, None]
 #active_views: [Filmic Log Encoding Base, sRGB OETF, Non-Colour Data, Linear Raw, No View]
 
 colorspaces:
@@ -157,6 +163,57 @@ colorspaces:
         - !<ColorSpaceTransform> {src: Apple DCI-P3 D65, dst: Linear}
 
   - !<ColorSpace>
+    name: AdobeRGB D65 Linear
+    family: display
+    equalitygroup: ""
+    bitdepth: 32f
+    isdata: false
+    allocation: lg2
+    allocationvars: [-12.4739, 12.5261]
+    to_reference: !<GroupTransform>
+      children:
+        - !<MatrixTransform> {matrix: [0.57667, 0.18556, 0.18823, 0, 0.29734, 0.62736, 0.07529, 0, 0.02703, 0.07069, 0.99134, 0, 0, 0, 0, 1]}
+        - !<MatrixTransform> {matrix: [0.412391, 0.357584, 0.180481, 0, 0.212639, 0.715169, 0.0721923, 0, 0.0193308, 0.119195, 0.950532, 0, 0, 0, 0, 1], direction: inverse}
+
+  - !<ColorSpace>
+    name: AdobeRGB
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      AdobeRGB display referred encoding with CCTF.
+    isdata: false
+    allocation: uniform
+    allocationvars: [0.0, 1.0]
+    to_reference: !<GroupTransform>
+      children:
+        - !<ExponentTransform> {value: [2.19921875, 2.19921875, 2.19921875, 1.0]}
+        - !<ColorSpaceTransform> {src: AdobeRGB D65 Linear, dst: Linear}
+
+  - !<ColorSpace>
+    name: AdobeRGB Filmic Log Encoding
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      Log based filmic shaper with 16.5 stops of latitude, and 25 stops of dynamic range with Apple P3 primaries.
+    isdata: false
+    allocation: lg2
+    allocationvars: [-12.473931188, 12.526068812]
+    from_reference: !<GroupTransform>
+        children:
+          - !<ColorSpaceTransform> {src: Linear, dst: Filmic Log Encoding}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0]}
+          - !<ColorSpaceTransform> {src: Linear, dst: AdobeRGB D65 Linear}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
+    to_reference: !<GroupTransform>
+        children:
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0]}
+          - !<ColorSpaceTransform> {src: AdobeRGB D65 Linear, dst: Linear}
+          - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
+          - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
+
+  - !<ColorSpace>
     name: BT.1886 EOTF
     family:
     equalitygroup:
@@ -211,6 +268,20 @@ colorspaces:
           - !<ExponentTransform> {value: [2.4, 2.4, 2.4, 1.0]}
           - !<ExponentTransform> {value: [2.2, 2.2, 2.2, 1.0], direction: inverse}
           - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
+
+  - !<ColorSpace>
+    name: Cineon Transfer Function
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      Cineon Transfer Function with BT.709 primaries.
+    isdata: false
+    allocation: uniform
+    allocationvars: [0.0, 1.0]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: CineonLog_to_linear.spi1d, interpolation: linear}
 
   - !<ColorSpace>
     name: Non-Colour Data
@@ -271,3 +342,8 @@ looks:
     name: Very Low Contrast
     process_space: Filmic Log Encoding
     transform: !<FileTransform> {src: Filmic_to_0-35_1-30.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: Log PFE
+    process_space: Cineon Transfer Function
+    transform: !<FileTransform> {src: Cineon_Rec709_to_Filmscan_LogPFE.cube, interpolation: best}
