@@ -7,7 +7,7 @@
 # Price, Nick Shaw, and Timothy
 # Lottes.
 
-ocio_profile_version: 1
+ocio_profile_version: 2
 
 search_path: "luts:looks"
 strictparsing: true
@@ -98,8 +98,9 @@ colorspaces:
     allocationvars: [-12.473931188, 12.526068812]
     from_reference: !<GroupTransform>
         children:
+          - !<RangeTransform> {min_in_value: 0.0, min_out_value: 0.0}
+          - !<MatrixTransform> {matrix: [0.85824167,  0.07059024,  0.07130802, 0, 0.03808708,  0.89062615,  0.07124896, 0, 0.03813568,  0.07059024,  0.89122523, 0, 0, 0, 0, 1], direction: forward}
           - !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 12.526068812]}
-          - !<FileTransform> {src: desat65cube.spi3d, interpolation: best}
           - !<AllocationTransform> {allocation: uniform, vars: [0, 0.66]}
     to_reference: !<AllocationTransform> {allocation: lg2, vars: [-12.473931188, 4.026068812], direction: inverse}
 
