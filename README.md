@@ -133,7 +133,7 @@ The canonized ground-truth encoding for Filmic is the *Filmic Base Log Encoding*
 
 ## Transfer Function of Aesthetic Outputs
 
-The contrasts are designed for an idealized sRGB display, with the aforementionned primaries, and an Electro-Optical Transfer Function consisting of a pure 2.2 power function.
+The contrasts are designed for an idealized sRGB display, with the aforementioned primaries, and an Electro-Optical Transfer Function consisting of a pure 2.2 power function.
 
 # Issues
 
